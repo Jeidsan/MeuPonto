@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeuPonto.View.Login">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Center"
+                     HorizontalOptions="Fill">
+            <Entry Placeholder="Nome de usuário"
+                   HorizontalOptions="Fill"
+                   HorizontalTextAlignment="Center"/>
+            <Entry IsPassword="True" 
+                   Placeholder="Senha" 
+                   HorizontalOptions="Fill"
+                   HorizontalTextAlignment="Center"/>
+            <Button x:Uid="btnLogin"
+                    x:Name="btnLogin"
+                    Text="Entrar" 
+                    BackgroundColor="Green" 
+                    HorizontalOptions="CenterAndExpand"
+                    Clicked="btnLogin_Clicked"/>
+            <Label Text="Criar uma conta" 
+                   TextColor="Blue"
+                   HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

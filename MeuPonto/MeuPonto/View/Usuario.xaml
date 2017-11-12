@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeuPonto.View.Usuario">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout HorizontalOptions="Fill" 
+                     VerticalOptions="FillAndExpand">
+                <Label Text="Usuário" 
+                   HorizontalOptions="Fill"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Large"
+                   TextColor="White"
+                   BackgroundColor="DarkCyan"/>
+
+                <!-- Nome do Usuário -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="Nome:" />
+                <Entry x:Uid="txtNome"
+                   x:Name="txtNome"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
+
+                <!-- Login do Usuário -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="Login:" />
+                <Entry x:Uid="txtLogin"
+                   x:Name="txtLogin"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
+
+                <!-- Senha do Usuário -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="Senha:" />
+                <Entry x:Uid="txtSenha"
+                   x:Name="txtSenha"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   IsPassword="True"
+                   Text="" />
+
+                <!-- CPF do Usuário -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="CPF:" />
+                <Entry x:Uid="txtCPF"
+                   x:Name="txtCPF"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
+
+                <!-- Telefone do Usuário -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="Telefone:" />
+                <Entry x:Uid="txtTelefone"
+                   x:Name="txtTelefone"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
+
+                <!-- E-mail do Usuário -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="E-mail:" />
+                <Entry x:Uid="txtEmail"
+                   x:Name="txtEmail"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
+
+                <!-- Jornada de Trabalho -->
+                <Label VerticalOptions="Fill"
+                       HorizontalOptions="Fill"
+                       Text="Jornada de Trabalho:" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Entry x:Uid="txtHoraInicioTrabalho"
+                           x:Name="txtHoraInicioTrabalho"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Fill"                 
+                           Text="00:00" />
+                    <Entry x:Uid="txtHoraInicioAlmoco"
+                           x:Name="txtHoraInicioAlmoco"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Fill"                 
+                           Text="00:00" />
+                    <Entry x:Uid="txtHoraFimAlmoco"
+                           x:Name="txtHoraFimAlmoco"
+                           Grid.Row="0"
+                           Grid.Column="2"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Fill"                 
+                           Text="00:00" />
+                    <Entry x:Uid="txtHoraFimTrabalho"
+                           x:Name="txtHoraFimTrabalho"
+                           Grid.Row="0"
+                           Grid.Column="3"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="Fill"                 
+                           Text="00:00" />
+                </Grid>
+
+                <!-- Botões -->
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Button x:Uid="btnCadastrarLocalizacao"
+                        x:Name="btnCadastrarLocalizacao"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center" 
+                        Text="Geolocalização"/>
+                    <Button x:Uid="btnCadastrarIris"
+                        x:Name="btnCadastrarIris"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center" 
+                        Text="Íris" />
+                    <Button x:Uid="btnSalvar"
+                        x:Name="btnSalvar"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center" 
+                        Text="Salvar"/>
+                    <Button x:Uid="btnCancelar"
+                        x:Name="btnCancelar"
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center"
+                        Text="Cancelar" />
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
