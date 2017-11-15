@@ -88,34 +88,31 @@
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Entry x:Uid="txtHoraInicioTrabalho"
+                    <TimePicker x:Uid="txtHoraInicioTrabalho"
                            x:Name="txtHoraInicioTrabalho"
                            Grid.Row="0"
                            Grid.Column="0"
-                           VerticalOptions="Fill"
-                           HorizontalOptions="Fill"                 
-                           Text="00:00" />
-                    <Entry x:Uid="txtHoraInicioAlmoco"
+                           HorizontalOptions="CenterAndExpand" 
+                           Format="HH:mm" />
+                    <TimePicker x:Uid="txtHoraInicioAlmoco"
                            x:Name="txtHoraInicioAlmoco"
                            Grid.Row="0"
                            Grid.Column="1"
                            VerticalOptions="Fill"
-                           HorizontalOptions="Fill"                 
-                           Text="00:00" />
-                    <Entry x:Uid="txtHoraFimAlmoco"
+                           HorizontalOptions="CenterAndExpand" 
+                           Format="HH:mm" />
+                    <TimePicker x:Uid="txtHoraFimAlmoco"
                            x:Name="txtHoraFimAlmoco"
                            Grid.Row="0"
                            Grid.Column="2"
-                           VerticalOptions="Fill"
-                           HorizontalOptions="Fill"                 
-                           Text="00:00" />
-                    <Entry x:Uid="txtHoraFimTrabalho"
+                           HorizontalOptions="CenterAndExpand" 
+                           Format="HH:mm" />
+                    <TimePicker x:Uid="txtHoraFimTrabalho"
                            x:Name="txtHoraFimTrabalho"
                            Grid.Row="0"
                            Grid.Column="3"
-                           VerticalOptions="Fill"
-                           HorizontalOptions="Fill"                 
-                           Text="00:00" />
+                           HorizontalOptions="CenterAndExpand" 
+                           Format="HH:mm" />
                 </Grid>
 
                 <!-- Botões -->

@@ -19,7 +19,7 @@ namespace MeuPonto.View
 
         private void btnLogin_Clicked(object sender, EventArgs e)
         {
-            
+            App.Current.MainPage = new Usuario();
         }
     }
 }
