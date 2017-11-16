@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using MeuPonto.Base;
 using Xamarin.Forms;
 
 namespace MeuPonto
 {
     public partial class App : Application
     {
+        
         public App()
         {
             InitializeComponent();
@@ -18,7 +19,7 @@ namespace MeuPonto
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            Database.CriarDatabase();
         }
 
         protected override void OnSleep()

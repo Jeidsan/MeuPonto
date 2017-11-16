@@ -73,7 +73,26 @@
                    VerticalOptions="Fill"
                    HorizontalOptions="Fill"                 
                    Text="" />
+                <!-- Empresa -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="Empresa:" />
+                <Entry x:Uid="txtEmpresa"
+                   x:Name="txtEmpresa"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
 
+                <!-- CNPJ -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="CNPJ:" />
+                <Entry x:Uid="txtCnpj"
+                   x:Name="txtCnpj"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
+                
                 <!-- Jornada de Trabalho -->
                 <Label VerticalOptions="Fill"
                        HorizontalOptions="Fill"
