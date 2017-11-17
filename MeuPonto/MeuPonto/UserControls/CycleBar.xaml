@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MeuPonto.UserControls.CycleBar">
+    <ContentView.Content>
+        <StackLayout>
+           
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>
+    
+    
+    
+    
+ <!--
+    
+    <Path Stroke="Black" StrokeThickness="1">
+                <Path.Data>
+                    <PathGeometry>
+                        <PathGeometry.Figures>
+                            <PathFigureCollection>
+                                <PathFigure StartPoint="0,100">
+                                    <PathFigure.Segments>
+                                        <PathSegmentCollection>
+                                            <ArcSegment Size="300,50" RotationAngle="30"
+                                            IsLargeArc="True"
+                                            SweepDirection="CounterClockwise"
+                                            Point="200,100" />
+                                        </PathSegmentCollection>
+                                    </PathFigure.Segments>
+                                </PathFigure>
+                            </PathFigureCollection>
+                        </PathGeometry.Figures>
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+    
+    
+    
+    -->

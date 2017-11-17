@@ -20,7 +20,7 @@
                 <Entry x:Uid="txtNome"
                    x:Name="txtNome"
                    VerticalOptions="Fill"
-                   HorizontalOptions="Fill"                 
+                   HorizontalOptions="Fill"
                    Text="" />
 
                 <!-- Login do Usuário -->
