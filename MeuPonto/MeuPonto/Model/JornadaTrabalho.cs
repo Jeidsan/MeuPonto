@@ -7,10 +7,10 @@ namespace MeuPonto.Model
     [Table("JornadaTrabalho")]
     public class JornadaTrabalho : DomainObject
     {        
-        public DateTime InicioTrabalho { get; set; }
-        public DateTime InicioAlmoco { get; set; }
-        public DateTime TerminoAlmoco { get; set; }
-        public DateTime TerminoTrabalho { get; set; }
+        public TimeSpan InicioTrabalho { get; set; }
+        public TimeSpan InicioAlmoco { get; set; }
+        public TimeSpan TerminoAlmoco { get; set; }
+        public TimeSpan TerminoTrabalho { get; set; }
 
     }
 }

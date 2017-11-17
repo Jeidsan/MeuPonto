@@ -1,5 +1,4 @@
-﻿using MeuPonto.Controller;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,45 +6,114 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MeuPonto.DAO;
+using MeuPonto.Model;
 
 namespace MeuPonto.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Usuario : ContentPage
     {
-        private UsuarioController fController;
-        private UsuarioController Controller
+        UsuarioDAO usuDao;
+        EmpresaDAO empDAO;
+        JornadaTrabalhoDAO jorDAO;
+        Model.Usuario usuarioLogado;
+        bool novoCadastro;
+
+        public Usuario(bool novoCadastroP, Model.Usuario usuarioLogadoP)
         {
-            get
-            {
-                if (fController == null)
-                    fController = new UsuarioController();
-                return fController;
-            }
+            InitializeComponent();
+            this.novoCadastro = novoCadastroP;
+            this.usuarioLogado = usuarioLogadoP;
+
         }
 
-        public Usuario()
+        private void btnCadastrarLocalizacaoClicked()
         {
-            InitializeComponent();           
+
         }
 
-        private void btnSalvar_Clicked(object sender, EventArgs e)
+        private void btnSalvarClicked()
         {
-            try
-            {
-                DateTime inicioJornada = new DateTime(2000, 1, 1, txtHoraInicioAlmoco.Time.Hours, txtHoraInicioAlmoco.Time.Minutes, 0);
-                DateTime inicioAlmoco = new DateTime(2000, 1, 1, txtHoraInicioAlmoco.Time.Hours, txtHoraInicioAlmoco.Time.Minutes, 0);
-                DateTime fimAlmoco = new DateTime(2000, 1, 1, txtHoraInicioAlmoco.Time.Hours, txtHoraInicioAlmoco.Time.Minutes, 0);
-                DateTime fimJornada = new DateTime(2000, 1, 1, txtHoraInicioAlmoco.Time.Hours, txtHoraInicioAlmoco.Time.Minutes, 0);
+            if (novoCadastro == true)
+                {InserirUsuario();}
+            else
+                {AtualizarUsuario();}
+        }
+        
+        private void btnCancelarClicked()
+        {
 
-                Controller.Cadastrar(txtNome.Text, txtLogin.Text, txtSenha.Text, txtCPF.Text, txtTelefone.Text, txtEmail.Text, inicioJornada, inicioAlmoco, fimAlmoco, fimJornada);
+        }
 
-                DisplayAlert("Meu Ponto", "Usuário cadastrado com sucesso", "Ok");
-            }
-            catch(Exception ex)
+        private void btnCadastrarIrisClicked()
+        {
+
+        }
+
+        private void InserirUsuario()
+        {
+            Empresa emp = new Empresa()
             {
-                DisplayAlert("Erro", ex.Message, "Fechar");
-            }
+                Nome = txtEmpresa.Text,
+                Cnpj = txtCnpj.Text
+            };
+            empDAO.Adicionar(emp);
+
+            JornadaTrabalho jor = new JornadaTrabalho()
+            {
+                InicioTrabalho = txtHoraInicioTrabalho.Time,
+                InicioAlmoco = txtHoraInicioAlmoco.Time,
+                TerminoAlmoco = txtHoraFimAlmoco.Time,
+                TerminoTrabalho = txtHoraFimTrabalho.Time
+            };
+            jorDAO.Adicionar(jor);
+
+           Model.Usuario usu = new Model.Usuario()
+            {
+                Nome = txtNome.Text,
+                Cpf = txtCPF.Text,
+                Email = txtEmail.Text,
+                Telefone = txtTelefone.Text,
+                Login = txtLogin.Text,
+                Senha = txtSenha.Text,
+                JornadaTrab = jor,
+                Empresa = emp
+            };            
+            usuDao.Adicionar(usu);
+        }
+
+        private void AtualizarUsuario()
+        {
+            Empresa emp = new Empresa()
+            {
+                Nome = txtEmpresa.Text,
+                Cnpj = txtCnpj.Text
+            };
+            empDAO.Atualizar(emp);
+
+            JornadaTrabalho jor = new JornadaTrabalho()
+            {
+                InicioTrabalho = txtHoraInicioTrabalho.Time,
+                InicioAlmoco = txtHoraInicioAlmoco.Time,
+                TerminoAlmoco = txtHoraFimAlmoco.Time,
+                TerminoTrabalho = txtHoraFimTrabalho.Time
+            };
+            jorDAO.Atualizar(jor);
+
+            Model.Usuario usu = new Model.Usuario()
+            {
+                Id = usuarioLogado.Id,
+                Nome = txtNome.Text,
+                Cpf = txtCPF.Text,
+                Email = txtEmail.Text,
+                Telefone = txtTelefone.Text,
+                Login = txtLogin.Text,
+                Senha = txtSenha.Text,
+                JornadaTrab = jor,
+                Empresa = emp
+            };
+            usuDao.Atualizar(usu);
         }
     }
 }

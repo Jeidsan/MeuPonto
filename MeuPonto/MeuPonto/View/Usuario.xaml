@@ -73,7 +73,26 @@
                    VerticalOptions="Fill"
                    HorizontalOptions="Fill"                 
                    Text="" />
+                <!-- Empresa -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="Empresa:" />
+                <Entry x:Uid="txtEmpresa"
+                   x:Name="txtEmpresa"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
 
+                <!-- CNPJ -->
+                <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="CNPJ:" />
+                <Entry x:Uid="txtCnpj"
+                   x:Name="txtCnpj"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"                 
+                   Text="" />
+                
                 <!-- Jornada de Trabalho -->
                 <Label VerticalOptions="Fill"
                        HorizontalOptions="Fill"
@@ -131,14 +150,16 @@
                         Grid.Column="0"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
-                        Text="Geolocalização"/>
+                        Text="Geolocalização"
+                        Clicked="btnCadastrarLocalizacaoClicked"/>
                     <Button x:Uid="btnCadastrarIris"
                         x:Name="btnCadastrarIris"
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
-                        Text="Íris" />
+                        Text="Íris" 
+                        Clicked="btnCadastrarIrisClicked"/>
                     <Button x:Uid="btnSalvar"
                         x:Name="btnSalvar"
                         Grid.Row="1"
@@ -146,14 +167,15 @@
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
                         Text="Salvar"
-                        Clicked="btnSalvar_Clicked"/>
+                        Clicked="btnSalvarClicked"/>
                     <Button x:Uid="btnCancelar"
                         x:Name="btnCancelar"
                         Grid.Row="1"
                         Grid.Column="1"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center"
-                        Text="Cancelar" />
+                        Text="Cancelar" 
+                        Clicked="btnCancelarClicked"/>
                 </Grid>
             </StackLayout>
         </ScrollView>
