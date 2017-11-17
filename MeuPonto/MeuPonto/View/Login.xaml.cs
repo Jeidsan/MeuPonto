@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using MeuPonto.Model;
 
 namespace MeuPonto.View
 {
@@ -19,7 +20,8 @@ namespace MeuPonto.View
 
         private void btnLogin_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new Usuario();
+            Model.Usuario usuarioLogado = new Model.Usuario();
+            App.Current.MainPage = new View.Usuario(true, usuarioLogado);
         }
     }
 }

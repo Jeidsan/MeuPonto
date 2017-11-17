@@ -150,28 +150,32 @@
                         Grid.Column="0"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
-                        Text="Geolocalização"/>
+                        Text="Geolocalização"
+                        Clicked="btnCadastrarLocalizacaoClicked"/>
                     <Button x:Uid="btnCadastrarIris"
                         x:Name="btnCadastrarIris"
                         Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
-                        Text="Íris" />
+                        Text="Íris" 
+                        Clicked="btnCadastrarIrisClicked"/>
                     <Button x:Uid="btnSalvar"
                         x:Name="btnSalvar"
                         Grid.Row="1"
                         Grid.Column="0"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
-                        Text="Salvar"/>
+                        Text="Salvar"
+                        Clicked="btnSalvarClicked"/>
                     <Button x:Uid="btnCancelar"
                         x:Name="btnCancelar"
                         Grid.Row="1"
                         Grid.Column="1"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center"
-                        Text="Cancelar" />
+                        Text="Cancelar" 
+                        Clicked="btnCancelarClicked"/>
                 </Grid>
             </StackLayout>
         </ScrollView>

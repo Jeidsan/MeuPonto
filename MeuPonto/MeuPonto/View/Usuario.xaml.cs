@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MeuPonto.DAO;
+using MeuPonto.Model;
 
 namespace MeuPonto.View
 {
@@ -16,128 +17,103 @@ namespace MeuPonto.View
         UsuarioDAO usuDao;
         EmpresaDAO empDAO;
         JornadaTrabalhoDAO jorDAO;
+        Model.Usuario usuarioLogado;
         bool novoCadastro;
 
-        public Usuario(bool novoCadastroP)
+        public Usuario(bool novoCadastroP, Model.Usuario usuarioLogadoP)
         {
             InitializeComponent();
             this.novoCadastro = novoCadastroP;
+            this.usuarioLogado = usuarioLogadoP;
 
         }
 
-        protected void OnStart()
+        private void btnCadastrarLocalizacaoClicked()
         {
-            
-            //botão Incluir
-            btnIncluir.Click += delegate
-            {
-                Empresa emp = new Empresa()
-                {
-                    Nome = txtEmpresa.Text,
-                    Cnpj = txtCnpj.Text
-                };
-                empDAO.InserirEmpresa(emp);
 
-                JornadaTrabalho jor = new JornadaTrabalho()
-                {
-                    InicioTrabalho = txtIniTra.Text,
-                    InicioAlmoco = txtIniAlm.Text,
-                    TerminoAlmoco = txtFimAlm.Text,
-                    TerminoTrabalho = txtFimTra.Text
-                };
-                jorDAO.InserirJornada(jor);
-
-                Usuario usu = new Usuario()
-                {
-                    Nome = txtNome.Text,
-                    Cpf = txtCpf.Text,
-                    Email = txtEmail.Text,
-                    Telefone = txtTelefone.Text,
-                    Login = txtLogin.Text,
-                    Senha = txtSenha.Text,
-                    JornadaTrab = jor,
-                    Empresa = emp
-                };
-                usuDao.InserirUsuario(usu);
-            };
-
-            //botão editar
-            btnEditar.Click += delegate
-            {
-                Empresa emp = new Empresa()
-                {
-                    Nome = txtEmpresa.Text,
-                    Cnpj = txtCnpj.Text
-                };
-                empDAO.AtualizarEmpresa(emp);
-
-                JornadaTrabalho jor = new JornadaTrabalho()
-                {
-                    InicioTrabalho = txtIniTra.Text,
-                    InicioAlmoco = txtIniAlm.Text,
-                    TerminoAlmoco = txtFimAlm.Text,
-                    TerminoTrabalho = txtFimTra.Text
-                };
-                jorDAO.AtualizarJornada(jor);
-
-                Usuario usu = new Usuario()
-                {
-                    Id = int.Parse(txtNome.Tag.ToString()),
-                    Nome = txtNome.Text,
-                    Cpf = txtCpf.Text,
-                    Email = txtEmail.Text,
-                    Telefone = txtTelefone.Text,
-                    Login = txtLogin.Text,
-                    Senha = txtSenha.Text,
-                    JornadaTrab = jor,
-                    Empresa = emp
-                };
-                usuDao.AtualizarUsuario(usu);
-            };
-
-            //botão deletar
-            btnDeletar.Click += delegate
-            {
-                Empresa emp = new Empresa()
-                {
-                    Nome = txtEmpresa.Text,
-                    Cnpj = txtCnpj.Text
-                };
-                empDAO.DeletarEmpresa(emp);
-
-                JornadaTrabalho jor = new JornadaTrabalho()
-                {
-                    InicioTrabalho = txtIniTra.Text,
-                    InicioAlmoco = txtIniAlm.Text,
-                    TerminoAlmoco = txtFimAlm.Text,
-                    TerminoTrabalho = txtFimTra.Text
-                };
-                jorDAO.DeletarJornada(jor);
-
-                Usuario usu = new Usuario()
-                {
-                    Id = int.Parse(txtNome.Tag.ToString()),
-                    Nome = txtNome.Text,
-                    Cpf = txtCpf.Text,
-                    Email = txtEmail.Text,
-                    Telefone = txtTelefone.Text,
-                    Login = txtLogin.Text,
-                    Senha = txtSenha.Text,
-                    JornadaTrab = jor,
-                    Empresa = emp
-                };
-                usuDao.DeletarUsuario(usu);
-            };
         }
 
-        protected override void OnSleep()
+        private void btnSalvarClicked()
         {
-            // Handle when your app sleeps
+            if (novoCadastro == true)
+                {InserirUsuario();}
+            else
+                {AtualizarUsuario();}
+        }
+        
+        private void btnCancelarClicked()
+        {
+
         }
 
-        protected override void OnResume()
+        private void btnCadastrarIrisClicked()
         {
-            // Handle when your app resumes
+
+        }
+
+        private void InserirUsuario()
+        {
+            Empresa emp = new Empresa()
+            {
+                Nome = txtEmpresa.Text,
+                Cnpj = txtCnpj.Text
+            };
+            empDAO.Adicionar(emp);
+
+            JornadaTrabalho jor = new JornadaTrabalho()
+            {
+                InicioTrabalho = txtHoraInicioTrabalho.Time,
+                InicioAlmoco = txtHoraInicioAlmoco.Time,
+                TerminoAlmoco = txtHoraFimAlmoco.Time,
+                TerminoTrabalho = txtHoraFimTrabalho.Time
+            };
+            jorDAO.Adicionar(jor);
+
+           Model.Usuario usu = new Model.Usuario()
+            {
+                Nome = txtNome.Text,
+                Cpf = txtCPF.Text,
+                Email = txtEmail.Text,
+                Telefone = txtTelefone.Text,
+                Login = txtLogin.Text,
+                Senha = txtSenha.Text,
+                JornadaTrab = jor,
+                Empresa = emp
+            };            
+            usuDao.Adicionar(usu);
+        }
+
+        private void AtualizarUsuario()
+        {
+            Empresa emp = new Empresa()
+            {
+                Nome = txtEmpresa.Text,
+                Cnpj = txtCnpj.Text
+            };
+            empDAO.Atualizar(emp);
+
+            JornadaTrabalho jor = new JornadaTrabalho()
+            {
+                InicioTrabalho = txtHoraInicioTrabalho.Time,
+                InicioAlmoco = txtHoraInicioAlmoco.Time,
+                TerminoAlmoco = txtHoraFimAlmoco.Time,
+                TerminoTrabalho = txtHoraFimTrabalho.Time
+            };
+            jorDAO.Atualizar(jor);
+
+            Model.Usuario usu = new Model.Usuario()
+            {
+                Id = usuarioLogado.Id,
+                Nome = txtNome.Text,
+                Cpf = txtCPF.Text,
+                Email = txtEmail.Text,
+                Telefone = txtTelefone.Text,
+                Login = txtLogin.Text,
+                Senha = txtSenha.Text,
+                JornadaTrab = jor,
+                Empresa = emp
+            };
+            usuDao.Atualizar(usu);
         }
     }
 }
