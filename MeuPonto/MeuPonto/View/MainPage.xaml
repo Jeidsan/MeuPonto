@@ -1,11 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:MeuPonto"
+             xmlns:local="clr-namespace:MeuPonto"         
              x:Class="MeuPonto.View.MainPage">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="Fill"
+                     HorizontalOptions="Fill">
+            <Grid HorizontalOptions="FillAndExpand"
+                  VerticalOptions="StartAndExpand">
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="10" />
+                </Grid.ColumnDefinitions>
+                <Label x:Uid="lblTituloPaginaPrincipal"
+                       x:Name="lblTituloPaginaPrincipal" 
+                       Grid.Column="1"
+                       Grid.Row="0"
+                       FontSize="Large"
+                       Text="Hoje"
+                       HorizontalOptions="CenterAndExpand" />
+            </Grid>
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
 
+            <Label x:Uid="lblHorasTrabalhadasAteAgora"
+                   x:Name="lblHorasTrabalhadasAteAgora"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="CenterAndExpand"
+                   FontSize="100"
+                   FontAttributes="Bold"
+                   Grid.ColumnSpan="2"
+                   Grid.Column="2"
+                   Grid.Row="1"
+                   TextColor="DarkGreen"
+                   Text="04h" />
+
+            <Grid HorizontalOptions="CenterAndExpand"
+                  VerticalOptions="EndAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <TimePicker x:Uid="txtHoraInicioTrabalho"
+                           x:Name="txtHoraInicioTrabalho"
+                           Grid.Row="0"
+                           Grid.Column="0"
+                           HorizontalOptions="CenterAndExpand" 
+                           Format="HH:mm" />
+                <TimePicker x:Uid="txtHoraInicioAlmoco"
+                           x:Name="txtHoraInicioAlmoco"
+                           Grid.Row="0"
+                           Grid.Column="1"
+                           VerticalOptions="Fill"
+                           HorizontalOptions="CenterAndExpand" 
+                           Format="HH:mm" />
+                <TimePicker x:Uid="txtHoraFimAlmoco"
+                           x:Name="txtHoraFimAlmoco"
+                           Grid.Row="0"
+                           Grid.Column="2"
+                           HorizontalOptions="CenterAndExpand" 
+                           Format="HH:mm" />
+                <TimePicker x:Uid="txtHoraFimTrabalho"
+                           x:Name="txtHoraFimTrabalho"
+                           Grid.Row="0"
+                           Grid.Column="3"
+                           HorizontalOptions="CenterAndExpand" 
+                           Format="HH:mm" />
+
+                <Button x:Uid="btnCadastrarLocalizacao"
+                        x:Name="btnCadastrarLocalizacao"
+                        Grid.ColumnSpan="4"
+                        Grid.Row="1"
+                        Grid.Column="0"                        
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center" 
+                        Text="Registrar ponto" />
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
