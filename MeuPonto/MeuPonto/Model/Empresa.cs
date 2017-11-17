@@ -1,6 +1,7 @@
 ﻿using MeuPonto.Base;
 using SQLite;
 using SQLite.Net.Attributes;
+using SQLiteNetExtensions.Attributes;
 
 namespace MeuPonto.Model
 {
@@ -9,5 +10,8 @@ namespace MeuPonto.Model
     {
         public string Cnpj { get; set; }
         public string Nome { get; set; }
+
+        [ForeignKey(typeof(Usuario))]
+        public int EmpresaId { get; set; }
     }
 }
