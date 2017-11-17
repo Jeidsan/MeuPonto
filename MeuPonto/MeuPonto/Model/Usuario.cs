@@ -13,15 +13,15 @@ namespace MeuPonto.Model
         public string Login { get; set; }
         public string Senha { get; set; }
 
-        //[ForeignKey(typeof(JornadaTrabalho))]
-        //public int JornadaTrabId { get; set; }
+        [ForeignKey(typeof(JornadaTrabalho))]
+        public int JornadaTrabId { get; set; }
 
-        //[OneToOne]
+        [OneToOne]
         public virtual JornadaTrabalho JornadaTrab { get; set; }
 
-        //[ForeignKey(typeof(Empresa))]
-        //public int EmpresaId { get; set; }
-        //[OneToOne]
+        [ForeignKey(typeof(Empresa))]
+        public int EmpresaId { get; set; }
+        [OneToOne]
         public virtual Empresa Empresa { get; set; }
     }
 }
