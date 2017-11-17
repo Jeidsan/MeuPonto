@@ -23,11 +23,11 @@ namespace MeuPonto.Model
         public int JornadaTrabId { get; set; }
 
         [OneToOne]
-        public JornadaTrabalho JornadaTrab { get; set; }
+        public virtual JornadaTrabalho JornadaTrab { get; set; }
 
         [ForeignKey(typeof(Empresa))]
         public int EmpresaId { get; set; }
         [OneToOne]
-        public Empresa Empresa { get; set; }
+        public virtual Empresa Empresa { get; set; }
     }
 }

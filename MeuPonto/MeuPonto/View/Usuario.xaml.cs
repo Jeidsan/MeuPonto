@@ -14,9 +14,9 @@ namespace MeuPonto.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Usuario : ContentPage
     {
-        UsuarioDAO usuDao;
-        EmpresaDAO empDAO;
-        JornadaTrabalhoDAO jorDAO;
+        UsuarioDAO usuDao = UsuarioDAO.GetInstance();
+        EmpresaDAO empDAO = EmpresaDAO.GetInstance();
+        JornadaTrabalhoDAO jorDAO = JornadaTrabalhoDAO.GetInstance();
         Model.Usuario usuarioLogado;
         bool novoCadastro;
 
