@@ -13,7 +13,7 @@ namespace MeuPonto.Controller
             return (usuario != null);
         }
 
-        public void Cadastrar(string nome, string login, string senha, string cpf, string telefone, string email, DateTime inicioJornada, DateTime inicioAlmoco, DateTime finalAlmoco, DateTime finalJornada)
+        public void Cadastrar(string nome, string login, string senha, string cpf, string telefone, string email, TimeSpan inicioJornada, TimeSpan inicioAlmoco, TimeSpan finalAlmoco, TimeSpan finalJornada)
         {
             JornadaTrabalho jornada = new JornadaTrabalho()
             {
