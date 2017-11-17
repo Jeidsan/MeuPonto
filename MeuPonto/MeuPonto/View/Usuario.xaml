@@ -145,7 +145,8 @@
                         Grid.Column="0"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
-                        Text="Salvar"/>
+                        Text="Salvar"
+                        Clicked="btnSalvar_Clicked"/>
                     <Button x:Uid="btnCancelar"
                         x:Name="btnCancelar"
                         Grid.Row="1"
