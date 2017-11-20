@@ -13,8 +13,8 @@ namespace MeuPonto.Controller
     {
         public void Adicionar(string cnpj, string nome)
         {
-            Empresa empresa = new Empresa() { Cnpj = cnpj, Nome = nome };
-            EmpresaDAO.GetInstance().Adicionar(empresa);
+            //Empresa empresa = new Empresa() { Cnpj = cnpj, Nome = nome };
+            //EmpresaDAO.GetInstance().Adicionar(empresa);
         }
     }
 }

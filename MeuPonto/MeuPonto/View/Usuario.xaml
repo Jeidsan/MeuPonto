@@ -92,7 +92,7 @@
                    VerticalOptions="Fill"
                    HorizontalOptions="Fill"                 
                    Text="" />
-                
+
                 <!-- Jornada de Trabalho -->
                 <Label VerticalOptions="Fill"
                        HorizontalOptions="Fill"

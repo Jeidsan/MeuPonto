@@ -15,28 +15,28 @@ namespace MeuPonto.Controller
 
         public void Cadastrar(string nome, string login, string senha, string cpf, string telefone, string email, TimeSpan inicioJornada, TimeSpan inicioAlmoco, TimeSpan finalAlmoco, TimeSpan finalJornada)
         {
-            JornadaTrabalho jornada = new JornadaTrabalho()
-            {
-                InicioTrabalho = inicioJornada,
-                InicioAlmoco = inicioAlmoco,
-                TerminoAlmoco = finalAlmoco,
-                TerminoTrabalho = finalJornada
-            };
+            //JornadaTrabalho jornada = new JornadaTrabalho()
+            //{
+            //    InicioTrabalho = inicioJornada,
+            //    InicioAlmoco = inicioAlmoco,
+            //    TerminoAlmoco = finalAlmoco,
+            //    TerminoTrabalho = finalJornada
+            //};
 
-            JornadaTrabalhoDAO.GetInstance().Adicionar(jornada);
+            //JornadaTrabalhoDAO.GetInstance().Adicionar(jornada);
 
-            Usuario usuario = new Usuario()
-            {
-                Nome = nome,
-                Login = login,
-                Senha = senha,
-                Cpf = cpf,
-                Telefone = telefone,
-                Email = email,
-                JornadaTrab = jornada
-            };
+            //Usuario usuario = new Usuario()
+            //{
+            //    Nome = nome,
+            //    Login = login,
+            //    Senha = senha,
+            //    Cpf = cpf,
+            //    Telefone = telefone,
+            //    Email = email,
+            //    JornadaTrab = jornada
+            //};
 
-            UsuarioDAO.GetInstance().Adicionar(usuario);
+            //UsuarioDAO.GetInstance().Adicionar(usuario);
         }
     }
 }

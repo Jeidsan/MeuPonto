@@ -15,7 +15,7 @@ namespace MeuPonto
         {
             InitializeComponent();
             
-            MainPage = new MeuPonto.View.MainPage();
+            MainPage = new MeuPonto.View.Login();
         }
 
         protected override void OnStart()

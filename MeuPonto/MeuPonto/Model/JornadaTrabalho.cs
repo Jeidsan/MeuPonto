@@ -5,16 +5,16 @@ using SQLiteNetExtensions.Attributes;
 
 namespace MeuPonto.Model
 {
-    [Table("JornadaTrabalho")]
+    //[Table("JornadaTrabalho")]
     public class JornadaTrabalho : DomainObject
     {        
-        public TimeSpan InicioTrabalho { get; set; }
-        public TimeSpan InicioAlmoco { get; set; }
-        public TimeSpan TerminoAlmoco { get; set; }
-        public TimeSpan TerminoTrabalho { get; set; }
+        //public TimeSpan InicioTrabalho { get; set; }
+        //public TimeSpan InicioAlmoco { get; set; }
+        //public TimeSpan TerminoAlmoco { get; set; }
+        //public TimeSpan TerminoTrabalho { get; set; }
 
-        [ForeignKey(typeof(Usuario))]
-        public int JornadaTrabId { get; set; }
+        //[ForeignKey(typeof(Usuario))]
+        //public int JornadaTrabId { get; set; }
 
     }
 }

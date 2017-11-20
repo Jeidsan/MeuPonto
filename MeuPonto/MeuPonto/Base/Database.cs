@@ -20,8 +20,8 @@ namespace MeuPonto.Base
             {
                 using (SQLiteConnection conexao = GetConnection())
                 {
-                    conexao.CreateTable<Empresa>();
-                    conexao.CreateTable<JornadaTrabalho>();
+                    //conexao.CreateTable<Empresa>();
+                    //conexao.CreateTable<JornadaTrabalho>();
                     conexao.CreateTable<Usuario>();
                 }
             }

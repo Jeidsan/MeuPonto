@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using MeuPonto.DAO;
 using MeuPonto.Model;
+using Plugin.Geolocator;
 
 namespace MeuPonto.View
 {
@@ -19,30 +20,42 @@ namespace MeuPonto.View
         JornadaTrabalhoDAO jorDAO = JornadaTrabalhoDAO.GetInstance();
         Model.Usuario usuarioLogado;
         bool novoCadastro;
+        double latitudeLocalTrab, longitudeLocalTrab = 0;
 
         public Usuario(bool novoCadastroP, Model.Usuario usuarioLogadoP)
         {
             InitializeComponent();
             this.novoCadastro = novoCadastroP;
             this.usuarioLogado = usuarioLogadoP;
-            txtNome.Text = "Luiz";
-            txtEmail.Text = "meuemail";
-            txtCPF.Text = "9999";
-            txtTelefone.Text = "8888";
-            txtLogin.Text = "login";
-            txtSenha.Text = "senha";
-            txtEmpresa.Text = "empresa";
-            txtCnpj.Text = "7777";
-            txtHoraInicioTrabalho.Time = new TimeSpan();
-            txtHoraInicioAlmoco.Time = new TimeSpan();
-            txtHoraFimAlmoco.Time = new TimeSpan();
-            txtHoraFimTrabalho.Time = new TimeSpan();
 
+            //txtNome.Text = "Luiz";
+            //txtEmail.Text = "meuemail";
+            //txtCPF.Text = "9999";
+            //txtTelefone.Text = "8888";
+            //txtLogin.Text = "login";
+            //txtSenha.Text = "senha";
+            //txtEmpresa.Text = "empresa";
+            //txtCnpj.Text = "7777";
+            //txtHoraInicioTrabalho.Time = new TimeSpan();
+            //txtHoraInicioAlmoco.Time = new TimeSpan();
+            //txtHoraFimAlmoco.Time = new TimeSpan();
+            //txtHoraFimTrabalho.Time = new TimeSpan();
         }
 
-        private void btnCadastrarLocalizacaoClicked()
+        private async void btnCadastrarLocalizacaoClicked(object sender, EventArgs e)
         {
-
+            try
+            {
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 50;
+                var position = await locator.GetPositionAsync();                
+                latitudeLocalTrab = position.Latitude;
+                longitudeLocalTrab = position.Longitude;
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Erro : ", ex.Message, "OK");
+            }
         }
 
         private void btnSalvarClicked()
@@ -52,33 +65,40 @@ namespace MeuPonto.View
             else
                 {AtualizarUsuario();}
 
-            IEnumerable<Model.Usuario> usuarios = usuDao.Consultar();
-            var message = "";
-            foreach (Model.Usuario usu in usuarios)
-            {
-                message = string.Concat("Nome: ", usu.Nome, "\n");
-                message = string.Concat(message, "CPF: ", usu.Cpf, "\n");
-                message = string.Concat(message, "Email: ", usu.Email, "\n");
-                message = string.Concat(message, "Telefone: ", usu.Telefone, "\n");
-                message = string.Concat(message, "Login: ", usu.Login, "\n");
-                message = string.Concat(message, "Senha: ", usu.Senha, "\n");
-                message = string.Concat(message, "Empresa Id: ", usu.Empresa.Id, "\n");              
- //               message = string.Concat(message, "Empresa: ", usu.Empresa.Nome, "\n");
-  //              message = string.Concat(message, "Empresa Id: ", usu.Empresa.Id, "\n");
-                //               message = string.Concat(message, "CNPJ: ", usu.Empresa.Cnpj, "\n");
-                message = string.Concat(message, "JornadaTrabId: ", usu.JornadaTrab.Id, "\n");
- //               message = string.Concat(message, "InicioTrabalho: ", usu.JornadaTrab.InicioTrabalho, "\n");
- //               message = string.Concat(message, "InicioAlmoco: ", usu.JornadaTrab.InicioAlmoco, "\n");
-  //              message = string.Concat(message, "TerminoAlmoco: ", usu.JornadaTrab.TerminoAlmoco, "\n");
-  //              message = string.Concat(message, "TerminoTrabalho: ", usu.JornadaTrab.TerminoTrabalho, "\n");
-                DisplayAlert(string.Concat("Usuário: ", usu.Id), message, "OK");
-            }           
+            //IEnumerable<Model.Usuario> usuarios = usuDao.Consultar();
+            //var message = "";
+            //foreach (Model.Usuario usu in usuarios)
+            //{
+            //    message = string.Concat("Nome: ", usu.Nome, "\n");
+            //    message = string.Concat(message, "CPF: ", usu.Cpf, "\n");
+            //    message = string.Concat(message, "Email: ", usu.Email, "\n");
+            //    message = string.Concat(message, "Telefone: ", usu.Telefone, "\n");
+            //    message = string.Concat(message, "Login: ", usu.Login, "\n");
+            //    message = string.Concat(message, "Senha: ", usu.Senha, "\n");         
+            //    message = string.Concat(message, "Empresa: ", usu.Empresa, "\n");
+            //    message = string.Concat(message, "CNPJ: ", usu.Cnpj, "\n");
+            //    message = string.Concat(message, "InicioTrabalho: ", usu.InicioTrabalho, "\n");
+            //    message = string.Concat(message, "InicioAlmoco: ", usu.InicioAlmoco, "\n");
+            //    message = string.Concat(message, "TerminoAlmoco: ", usu.TerminoAlmoco, "\n");
+            //    message = string.Concat(message, "TerminoTrabalho: ", usu.TerminoTrabalho, "\n");
+            //    message = string.Concat(message, "Latitude: ", usu.Latitude, "\n");
+            //    message = string.Concat(message, "Longitude: ", usu.Longitude, "\n");
+
+            //    DisplayAlert(string.Concat("Usuário: ", usu.Id), message, "OK");
+            //}           
 
         }
         
         private void btnCancelarClicked()
         {
-
+            if (novoCadastro == true)
+            {
+                App.Current.MainPage = new View.Login();
+            }
+            else
+            {
+                App.Current.MainPage = new View.MainPage();
+            }
         }
 
         private void btnCadastrarIrisClicked()
@@ -95,54 +115,22 @@ namespace MeuPonto.View
                 Email = txtEmail.Text,
                 Telefone = txtTelefone.Text,
                 Login = txtLogin.Text,
-                Senha = txtSenha.Text
-            };
-            usuDao.Adicionar(usu);
-
-            Empresa emp = new Empresa()
-            {
-                EmpresaId = usu.Id,
-                Nome = txtEmpresa.Text,
-                Cnpj = txtCnpj.Text
-            };
-            empDAO.Adicionar(emp);
-
-            JornadaTrabalho jor = new JornadaTrabalho()
-            {
-                JornadaTrabId = usu.Id,
+                Senha = txtSenha.Text,
+                Empresa = txtEmpresa.Text,
+                Cnpj = txtCnpj.Text,
                 InicioTrabalho = txtHoraInicioTrabalho.Time,
                 InicioAlmoco = txtHoraInicioAlmoco.Time,
                 TerminoAlmoco = txtHoraFimAlmoco.Time,
-                TerminoTrabalho = txtHoraFimTrabalho.Time
+                TerminoTrabalho = txtHoraFimTrabalho.Time,
+                Latitude = latitudeLocalTrab,
+                Longitude = longitudeLocalTrab
             };
-            jorDAO.Adicionar(jor);
-                      
-            usu.JornadaTrab = jor;
-            usu.Empresa = emp;
-            jorDAO.Atualizar(jor);
-            empDAO.Atualizar(emp);
-            usuDao.Atualizar(usu);
-
+            usuDao.Adicionar(usu);
             
         }
 
         private void AtualizarUsuario()
         {
-            Empresa emp = new Empresa()
-            {
-                Nome = txtEmpresa.Text,
-                Cnpj = txtCnpj.Text
-            };
-            empDAO.Atualizar(emp);
-
-            JornadaTrabalho jor = new JornadaTrabalho()
-            {
-                InicioTrabalho = txtHoraInicioTrabalho.Time,
-                InicioAlmoco = txtHoraInicioAlmoco.Time,
-                TerminoAlmoco = txtHoraFimAlmoco.Time,
-                TerminoTrabalho = txtHoraFimTrabalho.Time
-            };
-            jorDAO.Atualizar(jor);
 
             Model.Usuario usu = new Model.Usuario()
             {
@@ -153,8 +141,14 @@ namespace MeuPonto.View
                 Telefone = txtTelefone.Text,
                 Login = txtLogin.Text,
                 Senha = txtSenha.Text,
-                JornadaTrab = jor,
-                Empresa = emp
+                Empresa = txtEmpresa.Text,
+                Cnpj = txtCnpj.Text,
+                InicioTrabalho = txtHoraInicioTrabalho.Time,
+                InicioAlmoco = txtHoraInicioAlmoco.Time,
+                TerminoAlmoco = txtHoraFimAlmoco.Time,
+                TerminoTrabalho = txtHoraFimTrabalho.Time,
+                Latitude = latitudeLocalTrab,
+                Longitude = longitudeLocalTrab
             };
             usuDao.Atualizar(usu);
         }

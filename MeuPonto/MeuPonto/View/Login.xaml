@@ -18,9 +18,10 @@
                     BackgroundColor="Green" 
                     HorizontalOptions="CenterAndExpand"
                     Clicked="btnLogin_Clicked"/>
-            <Label Text="Criar uma conta" 
-                   TextColor="Blue"
-                   HorizontalOptions="CenterAndExpand" />
+            <Button Text="Criar uma conta" 
+                    TextColor="Blue"
+                    HorizontalOptions="CenterAndExpand" 
+                    Clicked="btnCreate_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -19,9 +19,13 @@ namespace MeuPonto.View
         }
 
         private void btnLogin_Clicked(object sender, EventArgs e)
+        {  
+            App.Current.MainPage = new View.MainPage();
+        }
+
+        private void btnCreate_Clicked(object sender, EventArgs e)
         {
-            Model.Usuario usuarioLogado = new Model.Usuario();
-            App.Current.MainPage = new View.Usuario(true, usuarioLogado);
+            App.Current.MainPage = new View.Usuario(true, null);
         }
     }
 }
