@@ -7,10 +7,10 @@ namespace MeuPonto.Controller
 {
     public class UsuarioController : IDomainController<Usuario>
     {
-        public bool Autenticar(string login, string senha)
+        public Usuario Autenticar(string login, string senha)
         {
-            Usuario usuario = Database.GetConnection().FindWithQuery<Usuario>("SELECT TOP 1 * FROM Usuario WHERE login = ? AND senha = ?", login, senha);
-            return (usuario != null);
+            Usuario usuario = Database.GetConnection().FindWithQuery<Usuario>("SELECT * FROM Usuario WHERE login = ? AND senha = ?", login, senha);
+            return usuario;
         }
 
         public void Cadastrar(string nome, string login, string senha, string cpf, string telefone, string email, TimeSpan inicioJornada, TimeSpan inicioAlmoco, TimeSpan finalAlmoco, TimeSpan finalJornada)

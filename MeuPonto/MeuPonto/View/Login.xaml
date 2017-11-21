@@ -5,10 +5,14 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center"
                      HorizontalOptions="Fill">
-            <Entry Placeholder="Nome de usuário"
+            <Entry x:Uid="txtLogin"
+                   x:Name="txtLogin"
+                   Placeholder="Nome de usuário"
                    HorizontalOptions="Fill"
                    HorizontalTextAlignment="Center"/>
-            <Entry IsPassword="True" 
+            <Entry x:Uid="txtSenha"
+                   x:Name="txtSenha"
+                   IsPassword="True" 
                    Placeholder="Senha" 
                    HorizontalOptions="Fill"
                    HorizontalTextAlignment="Center"/>

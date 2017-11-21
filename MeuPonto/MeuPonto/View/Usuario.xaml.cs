@@ -18,15 +18,13 @@ namespace MeuPonto.View
         UsuarioDAO usuDao = UsuarioDAO.GetInstance();
         EmpresaDAO empDAO = EmpresaDAO.GetInstance();
         JornadaTrabalhoDAO jorDAO = JornadaTrabalhoDAO.GetInstance();
-        Model.Usuario usuarioLogado;
         bool novoCadastro;
         double latitudeLocalTrab, longitudeLocalTrab = 0;
 
-        public Usuario(bool novoCadastroP, Model.Usuario usuarioLogadoP)
+        public Usuario(bool novoCadastroP)
         {
             InitializeComponent();
             this.novoCadastro = novoCadastroP;
-            this.usuarioLogado = usuarioLogadoP;
 
             //txtNome.Text = "Luiz";
             //txtEmail.Text = "meuemail";
@@ -56,14 +54,52 @@ namespace MeuPonto.View
             {
                 await DisplayAlert("Erro : ", ex.Message, "OK");
             }
+
+
+            //try
+            //{
+            //    var locator = CrossGeolocator.Current;
+
+            //    locator.DesiredAccuracy = 50;
+
+            //    var geoLocation = locator.GetPositionAsync().ContinueWith(t =>
+            //    {
+            //        if (t.IsFaulted)
+            //        {
+            //            //System.Diagnostics.Debug.WriteLine("Error : {0}", ((GeolocationException)t.Exception.InnerException).Error.ToString());
+            //        }
+            //        else if (t.IsCanceled)
+            //        {
+            //            System.Diagnostics.Debug.WriteLine("Error : The geolocation has got canceled !");
+            //        }
+            //        else
+            //        {
+
+            //            Device.BeginInvokeOnMainThread(() =>
+            //            {
+            //                DisplayAlert("Localização", t.Result.Latitude + " " + t.Result.Longitude, "OK");
+            //            });
+            //        }
+            //    }, TaskScheduler.FromCurrentSynchronizationContext());
+            //}
+            //catch (Exception ex)
+            //{
+            //    await DisplayAlert("Erro : ", ex.Message, "OK");
+            //}
         }
 
         private void btnSalvarClicked()
         {
             if (novoCadastro == true)
-                {InserirUsuario();}
+            {
+                InserirUsuario();
+                App.Current.MainPage = new View.Login();
+            }
             else
-                {AtualizarUsuario();}
+            {
+                AtualizarUsuario();
+                App.Current.MainPage = new View.MainPage();
+            }
 
             //IEnumerable<Model.Usuario> usuarios = usuDao.Consultar();
             //var message = "";
@@ -90,7 +126,7 @@ namespace MeuPonto.View
         }
         
         private void btnCancelarClicked()
-        {
+        {            
             if (novoCadastro == true)
             {
                 App.Current.MainPage = new View.Login();
@@ -134,7 +170,7 @@ namespace MeuPonto.View
 
             Model.Usuario usu = new Model.Usuario()
             {
-                Id = usuarioLogado.Id,
+                Id = Sistema.UsuarioLogado.Id,
                 Nome = txtNome.Text,
                 Cpf = txtCPF.Text,
                 Email = txtEmail.Text,
