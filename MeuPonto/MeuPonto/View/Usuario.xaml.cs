@@ -16,8 +16,6 @@ namespace MeuPonto.View
     public partial class Usuario : ContentPage
     {
         UsuarioDAO usuDao = UsuarioDAO.GetInstance();
-        EmpresaDAO empDAO = EmpresaDAO.GetInstance();
-        JornadaTrabalhoDAO jorDAO = JornadaTrabalhoDAO.GetInstance();
         bool novoCadastro;
         double latitudeLocalTrab, longitudeLocalTrab = 0;
 
@@ -162,7 +160,6 @@ namespace MeuPonto.View
                 Longitude = longitudeLocalTrab
             };
             usuDao.Adicionar(usu);
-            
         }
 
         private void AtualizarUsuario()
