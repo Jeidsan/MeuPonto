@@ -42,10 +42,8 @@
     <Compile Include="Base\IDomainController.cs" />
     <Compile Include="Base\IDomainObjectDAO.cs" />
     <Compile Include="Base\DomainObject.cs" />
-    <Compile Include="Controller\EmpresaController.cs" />
     <Compile Include="Controller\UsuarioController.cs" />
-    <Compile Include="DAO\EmpresaDAO.cs" />
-    <Compile Include="DAO\JornadaTrabalhoDAO.cs" />
+    <Compile Include="DAO\PontoDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Base\Database.cs" />
     <Compile Include="Model\Empresa.cs" />

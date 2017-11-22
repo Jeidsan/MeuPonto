@@ -30,11 +30,5 @@ namespace MeuPonto.Model
 
         public double Latitude { get; set; }
         public double Longitude { get; set; }
-
-        //[OneToOne("JornadaTrabId")]
-        //public JornadaTrabalho JornadaTrab { get; set; }
-
-        //[OneToOne("EmpresaId")]
-        //public Empresa Empresa { get; set; }
     }
 }

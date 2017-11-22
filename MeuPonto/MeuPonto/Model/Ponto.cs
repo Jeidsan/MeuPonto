@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MeuPonto.Base;
+using SQLite.Net.Attributes;
+using System;
+using SQLiteNetExtensions.Attributes;
 
 namespace MeuPonto.Model
 {
-    public class Ponto
+    [Table("Ponto")]
+    public class Ponto : DomainObject
     {
-        public DateTime DiaPonto { get; set; }
-        public TimeSpan HoraPonto { get; set; }
+        public DateTime Data { get; set; }
+        public TimeSpan InicioTrabalho { get; set; }
+        public TimeSpan InicioAlmoco { get; set; }
+        public TimeSpan TerminoAlmoco { get; set; }
+        public TimeSpan TerminoTrabalho { get; set; }
 
-        public Ponto()
-        {
-
-        }
-
-        public Ponto(DateTime DiaPontoP, TimeSpan HoraPontoP)
-        {
-            this.DiaPonto = DiaPontoP;
-            this.HoraPonto = HoraPontoP;
-        }
     }
 }
