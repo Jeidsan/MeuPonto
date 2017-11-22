@@ -50,10 +50,14 @@
     <Compile Include="Base\Database.cs" />
     <Compile Include="Model\Empresa.cs" />
     <Compile Include="Model\JornadaTrabalho.cs" />
+    <Compile Include="Model\Ponto.cs" />
     <Compile Include="Model\Sistema.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="UserControls\CycleBar.xaml.cs">
       <DependentUpon>CycleBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Consulta.xaml.cs">
+      <DependentUpon>Consulta.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
@@ -136,7 +140,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="View\Consulta.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="UserControls\CycleBar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
