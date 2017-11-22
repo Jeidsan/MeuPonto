@@ -14,5 +14,18 @@ namespace MeuPonto.Model
         public TimeSpan TerminoAlmoco { get; set; }
         public TimeSpan TerminoTrabalho { get; set; }
 
+        public Ponto()
+        {
+
+        }
+
+        public Ponto(DateTime DataP, TimeSpan InicioTrabalhoP, TimeSpan InicioAlmocoP, TimeSpan TerminoAlmocoP, TimeSpan TerminoTrabalhoP)
+        {
+            this.Data = DataP;
+            this.InicioTrabalho = InicioTrabalhoP;
+            this.InicioAlmoco = InicioAlmocoP;
+            this.TerminoAlmoco = TerminoAlmocoP;
+            this.TerminoTrabalho = TerminoTrabalhoP;
+        }
     }
 }

@@ -46,8 +46,6 @@
     <Compile Include="DAO\PontoDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Base\Database.cs" />
-    <Compile Include="Model\Empresa.cs" />
-    <Compile Include="Model\JornadaTrabalho.cs" />
     <Compile Include="Model\Ponto.cs" />
     <Compile Include="Model\Sistema.cs" />
     <Compile Include="Model\Usuario.cs" />

@@ -17,20 +17,26 @@ namespace MeuPonto.View
         {
 
             Ponto[] listaPontos = new Ponto[5];
-            listaPontos[0] = new Ponto(DateTime.Today, new TimeSpan());
-            listaPontos[1] = new Ponto(DateTime.Today, new TimeSpan());
-            listaPontos[2] = new Ponto(DateTime.Today, new TimeSpan());
-            listaPontos[3] = new Ponto(DateTime.Today, new TimeSpan());
-            listaPontos[4] = new Ponto(DateTime.Today, new TimeSpan());
+            listaPontos[0] = new Ponto(DateTime.Today, new TimeSpan(), new TimeSpan(), new TimeSpan(), new TimeSpan());
+            listaPontos[1] = new Ponto(DateTime.Today, new TimeSpan(), new TimeSpan(), new TimeSpan(), new TimeSpan());
+            listaPontos[2] = new Ponto(DateTime.Today, new TimeSpan(), new TimeSpan(), new TimeSpan(), new TimeSpan());
+            listaPontos[3] = new Ponto(DateTime.Today, new TimeSpan(), new TimeSpan(), new TimeSpan(), new TimeSpan());
+            listaPontos[4] = new Ponto(DateTime.Today, new TimeSpan(), new TimeSpan(), new TimeSpan(), new TimeSpan());
 
             string[] mensagem = new string[listaPontos.Length];
             for (int i = 0; i < listaPontos.Length; i++)
             {
-                mensagem[i] = string.Concat(listaPontos[i].DiaPonto.ToString("dd/MM/yyyy"), " - ", listaPontos[i].HoraPonto.ToString());
+                mensagem[i] = string.Concat(listaPontos[i].Data.ToString("dd/MM/yyyy"), "  -  ");
+                mensagem[i] = string.Concat(mensagem[i], listaPontos[i].InicioTrabalho.ToString(), " - ");
+                mensagem[i] = string.Concat(mensagem[i], listaPontos[i].InicioAlmoco.ToString(), " - ");
+                mensagem[i] = string.Concat(mensagem[i], listaPontos[i].TerminoAlmoco.ToString(), " - ");
+                mensagem[i] = string.Concat(mensagem[i], listaPontos[i].TerminoTrabalho.ToString());
             }
 
-            InitializeComponent();
+
+                InitializeComponent();
             this.ListaPontos.ItemsSource = mensagem;
         }
     }
+
 }
