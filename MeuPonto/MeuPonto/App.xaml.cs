@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using MeuPonto.Base;
 using Xamarin.Forms;
 
 namespace MeuPonto

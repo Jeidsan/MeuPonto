@@ -4,7 +4,29 @@
              x:Class="MeuPonto.View.Consulta">
     <ContentPage.Content>
         <StackLayout>
+            
             <ListView x:Name="ListaPontos" BackgroundColor="White" />
+            
+            <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="Horas trabalhadas:" />
+            <Label x:Uid="lblHorasTrabalhadas"
+                   x:Name="lblHorasTrabalhadas"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   FontSize="20"
+                   Text="" />
+
+            <Label VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   Text="Saldo de horas:" />
+            <Label x:Uid="lblSaldoHoras"
+                   x:Name="lblSaldoHoras"
+                   VerticalOptions="Fill"
+                   HorizontalOptions="Fill"
+                   FontSize="20"
+                   Text="" />
+            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

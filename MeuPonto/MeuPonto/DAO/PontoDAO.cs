@@ -48,14 +48,30 @@ namespace MeuPonto.DAO
             }
         }
 
+        public IEnumerable<String> ConsultarPontos()
+        {
+            try
+            {
+                using (SQLiteConnection conexao = Database.GetConnection())
+                {
+                    IEnumerable<String> listaPontos = conexao.Query<String>("select strftime('%d/%m/%Y', Data) || '  -  ' || group_concat(strftime('%H:%M', Data), ' - ') as pontos from Ponto group by date(Data)");
+                    return listaPontos;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao consultar a lista de batidas de pontos na base de dados. Por favor, tente realizar a tarefa novamente.", ex);
+            }
+        }
+
         public Ponto Consultar(int id)
         {
             try
             {
                 using (SQLiteConnection conexao = Database.GetConnection())
                 {
-                    List<Ponto> listaJornadaTrabalhos = conexao.Query<Ponto>("SELECT * FROM Ponto WHERE Id=?", id);
-                    return listaJornadaTrabalhos.FirstOrDefault();
+                    List<Ponto> listaPontos = conexao.Query<Ponto>("SELECT * FROM Ponto WHERE Id=?", id);
+                    return listaPontos.FirstOrDefault(); ;
                 }
             }
             catch (Exception ex)
@@ -73,5 +89,6 @@ namespace MeuPonto.DAO
         {
             Database.ExecutarComando("DELETE FROM Ponto WHERE Id=?", id);
         }
+
     }
 }

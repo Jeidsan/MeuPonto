@@ -23,6 +23,7 @@ namespace MeuPonto.Base
                     //conexao.CreateTable<Empresa>();
                     //conexao.CreateTable<JornadaTrabalho>();
                     conexao.CreateTable<Usuario>();
+                    conexao.CreateTable<Ponto>();
                 }
             }
             catch (Exception ex)
