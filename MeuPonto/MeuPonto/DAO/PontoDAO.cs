@@ -80,6 +80,22 @@ namespace MeuPonto.DAO
             }
         }
 
+        public Ponto ConsultarPontoDia()
+        {
+            try
+            {
+                using (SQLiteConnection conexao = Database.GetConnection())
+                {
+                    List<Ponto> listaJornadaTrabalhos = conexao.Query<Ponto>("SELECT * FROM Ponto WHERE Data='?'", DateTime.Now.ToString("yyyy-MM-dd"));
+                    return listaJornadaTrabalhos.FirstOrDefault();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Ocorreu um erro ao consultar um registro de ponto na base de dados. Por favor, tente realizar a tarefa novamente.", ex);
+            }
+        }
+
         public void Excluir(Ponto domainObject)
         {
             Database.Excluir<Ponto>(domainObject);
