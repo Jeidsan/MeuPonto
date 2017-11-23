@@ -77,14 +77,15 @@
                            HorizontalOptions="CenterAndExpand" 
                            Format="HH:mm" />
 
-                <Button x:Uid="btnCadastrarLocalizacao"
-                        x:Name="btnCadastrarLocalizacao"
+                <Button x:Uid="btnRegistrarPonto"
+                        x:Name="btnRegistrarPonto"
                         Grid.ColumnSpan="4"
                         Grid.Row="1"
                         Grid.Column="0"                        
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
-                        Text="Registrar ponto" />
+                        Text="Registrar ponto"
+                        Clicked="btnRegistrarPonto_Clicked"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>
