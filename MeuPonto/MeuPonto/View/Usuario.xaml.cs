@@ -18,67 +18,6 @@ namespace MeuPonto.View
         {
             InitializeComponent();
             this.novoCadastro = novoCadastroP;
-
-            //txtNome.Text = "Luiz";
-            //txtEmail.Text = "meuemail";
-            //txtCPF.Text = "9999";
-            //txtTelefone.Text = "8888";
-            //txtLogin.Text = "login";
-            //txtSenha.Text = "senha";
-            //txtEmpresa.Text = "empresa";
-            //txtCnpj.Text = "7777";
-            //txtHoraInicioTrabalho.Time = new TimeSpan();
-            //txtHoraInicioAlmoco.Time = new TimeSpan();
-            //txtHoraFimAlmoco.Time = new TimeSpan();
-            //txtHoraFimTrabalho.Time = new TimeSpan();
-        }
-
-        private async void btnCadastrarLocalizacaoClicked(object sender, EventArgs e)
-        {
-            try
-            {
-                var locator = CrossGeolocator.Current;
-                locator.DesiredAccuracy = 50;
-                var position = await locator.GetPositionAsync();                
-                latitudeLocalTrab = position.Latitude;
-                longitudeLocalTrab = position.Longitude;
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Erro : ", ex.Message, "OK");
-            }
-
-
-            //try
-            //{
-            //    var locator = CrossGeolocator.Current;
-
-            //    locator.DesiredAccuracy = 50;
-
-            //    var geoLocation = locator.GetPositionAsync().ContinueWith(t =>
-            //    {
-            //        if (t.IsFaulted)
-            //        {
-            //            //System.Diagnostics.Debug.WriteLine("Error : {0}", ((GeolocationException)t.Exception.InnerException).Error.ToString());
-            //        }
-            //        else if (t.IsCanceled)
-            //        {
-            //            System.Diagnostics.Debug.WriteLine("Error : The geolocation has got canceled !");
-            //        }
-            //        else
-            //        {
-
-            //            Device.BeginInvokeOnMainThread(() =>
-            //            {
-            //                DisplayAlert("Localização", t.Result.Latitude + " " + t.Result.Longitude, "OK");
-            //            });
-            //        }
-            //    }, TaskScheduler.FromCurrentSynchronizationContext());
-            //}
-            //catch (Exception ex)
-            //{
-            //    await DisplayAlert("Erro : ", ex.Message, "OK");
-            //}
         }
 
         private void btnSalvarClicked()
@@ -93,29 +32,6 @@ namespace MeuPonto.View
                 AtualizarUsuario();
                 App.Current.MainPage = new View.MainPage();
             }
-
-            //IEnumerable<Model.Usuario> usuarios = usuDao.Consultar();
-            //var message = "";
-            //foreach (Model.Usuario usu in usuarios)
-            //{
-            //    message = string.Concat("Nome: ", usu.Nome, "\n");
-            //    message = string.Concat(message, "CPF: ", usu.Cpf, "\n");
-            //    message = string.Concat(message, "Email: ", usu.Email, "\n");
-            //    message = string.Concat(message, "Telefone: ", usu.Telefone, "\n");
-            //    message = string.Concat(message, "Login: ", usu.Login, "\n");
-            //    message = string.Concat(message, "Senha: ", usu.Senha, "\n");         
-            //    message = string.Concat(message, "Empresa: ", usu.Empresa, "\n");
-            //    message = string.Concat(message, "CNPJ: ", usu.Cnpj, "\n");
-            //    message = string.Concat(message, "InicioTrabalho: ", usu.InicioTrabalho, "\n");
-            //    message = string.Concat(message, "InicioAlmoco: ", usu.InicioAlmoco, "\n");
-            //    message = string.Concat(message, "TerminoAlmoco: ", usu.TerminoAlmoco, "\n");
-            //    message = string.Concat(message, "TerminoTrabalho: ", usu.TerminoTrabalho, "\n");
-            //    message = string.Concat(message, "Latitude: ", usu.Latitude, "\n");
-            //    message = string.Concat(message, "Longitude: ", usu.Longitude, "\n");
-
-            //    DisplayAlert(string.Concat("Usuário: ", usu.Id), message, "OK");
-            //}           
-
         }
         
         private void btnCancelarClicked()
@@ -128,11 +44,6 @@ namespace MeuPonto.View
             {
                 App.Current.MainPage = new View.MainPage();
             }
-        }
-
-        private void btnCadastrarIrisClicked()
-        {
-
         }
 
         private void InserirUsuario()
@@ -155,6 +66,24 @@ namespace MeuPonto.View
                 Longitude = longitudeLocalTrab
             };
             usuDao.Adicionar(usu);
+        }
+
+        private async void btnCadastrarLocalizacao_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var locator = CrossGeolocator.Current;
+                locator.DesiredAccuracy = 50;
+                var position = await locator.GetPositionAsync();
+                latitudeLocalTrab = position.Latitude;
+                longitudeLocalTrab = position.Longitude;
+                AtualizarUsuario();
+                await DisplayAlert("Meu Ponto", "Localização registrada com sucesso", "OK");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Meu Ponto", "Ocorreu um erro ao buscar a sua localização. Por favor, tente novamente.", "OK");
+            }
         }
 
         private void AtualizarUsuario()
