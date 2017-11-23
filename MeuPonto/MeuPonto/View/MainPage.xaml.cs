@@ -19,24 +19,19 @@ namespace MeuPonto.View
         {
             InitializeComponent();
 
-            Ponto ponto = pontoDAO.ConsultarPontoDia();
-            txtHoraInicioTrabalho.Time = ponto.InicioTrabalho;
-            txtHoraInicioAlmoco.Time = ponto.InicioAlmoco;
-            txtHoraFimAlmoco.Time = ponto.TerminoAlmoco;
-            txtHoraFimTrabalho.Time = ponto.TerminoTrabalho;
+            //Ponto ponto = pontoDAO.ConsultarPontoDia();
+            //txtHoraInicioTrabalho.Time = ponto.InicioTrabalho;
+            //txtHoraInicioAlmoco.Time = ponto.InicioAlmoco;
+            //txtHoraFimAlmoco.Time = ponto.TerminoAlmoco;
+            //txtHoraFimTrabalho.Time = ponto.TerminoTrabalho;
         }
 
         private void btnRegistrarPonto_Clicked(object sender, EventArgs e)
         {
             Ponto ponto = new Ponto()
             {
-                Data = DateTime.Now,
-                InicioTrabalho = txtHoraInicioTrabalho.Time,
-                InicioAlmoco = txtHoraInicioAlmoco.Time,
-                TerminoAlmoco = txtHoraFimAlmoco.Time,
-                TerminoTrabalho = txtHoraFimTrabalho.Time
+                Data = DateTime.Now
             };
-
             pontoDAO.Adicionar(ponto);
         }
     }

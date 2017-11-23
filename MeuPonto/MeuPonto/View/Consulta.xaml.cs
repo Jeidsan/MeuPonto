@@ -28,7 +28,7 @@ namespace MeuPonto.View
             int count = 0;
             //string[] mensagem = new string[listaPontos.Length];
             foreach (String informacaoPontosDia in listaPontosDias)
-                //for (int i = 0; i < listaPontos.Length; i++)
+            //for (int i = 0; i < listaPontos.Length; i++)
             {
                 //mensagem[i] = string.Concat(listaPontos[i].Data.ToString("dd/MM/yyyy"), "  -  ");
                 //mensagem[i] = string.Concat(mensagem[i], listaPontos[i].Data.ToString("hh:mm"), " - ");
