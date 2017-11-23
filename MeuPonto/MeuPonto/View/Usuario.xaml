@@ -152,14 +152,6 @@
                         VerticalOptions="Center" 
                         Text="Geolocalização"
                         Clicked="btnCadastrarLocalizacao_Clicked"/>
-                    <Button x:Uid="btnCadastrarIris"
-                        x:Name="btnCadastrarIris"
-                        Grid.Row="0"
-                        Grid.Column="1"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Center" 
-                        Text="Íris" 
-                        Clicked="btnCadastrarIrisClicked"/>
                     <Button x:Uid="btnSalvar"
                         x:Name="btnSalvar"
                         Grid.Row="1"
