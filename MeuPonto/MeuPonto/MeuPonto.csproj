@@ -42,32 +42,35 @@
     <Compile Include="Base\IDomainController.cs" />
     <Compile Include="Base\IDomainObjectDAO.cs" />
     <Compile Include="Base\DomainObject.cs" />
-    <Compile Include="Controller\UsuarioController.cs" />
     <Compile Include="DAO\PontoDAO.cs" />
     <Compile Include="DAO\UsuarioDAO.cs" />
     <Compile Include="Base\Database.cs" />
     <Compile Include="Model\Ponto.cs" />
     <Compile Include="Model\Sistema.cs" />
     <Compile Include="Model\Usuario.cs" />
-    <Compile Include="UserControls\CycleBar.xaml.cs">
-      <DependentUpon>CycleBar.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Consulta.xaml.cs">
       <DependentUpon>Consulta.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Login.xaml.cs">
       <DependentUpon>Login.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\MainPage.xaml.cs">
-      <DependentUpon>MainPage.xaml</DependentUpon>
+    <Compile Include="View\Home.xaml.cs">
+      <DependentUpon>Home.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Main.xaml.cs">
+      <DependentUpon>Main.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainMaster.xaml.cs">
+      <DependentUpon>MainMaster.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainMenuItem.cs" />
     <Compile Include="View\Usuario.xaml.cs">
       <DependentUpon>Usuario.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="View\MainPage.xaml">
+    <EmbeddedResource Include="View\Home.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -143,13 +146,24 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UserControls\CycleBar.xaml">
+    <EmbeddedResource Include="View\Main.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="PluginsHelp\GeolocatorReadme.txt" />
+    <EmbeddedResource Include="View\MainMaster.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Imagens\configuracao.png" />
+    <EmbeddedResource Include="Imagens\detalhes.png" />
+    <EmbeddedResource Include="Imagens\home.png" />
+    <EmbeddedResource Include="Imagens\localizacao.png" />
+    <EmbeddedResource Include="Imagens\relatorio.png" />
+    <EmbeddedResource Include="Imagens\relogio.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.4.0.74863\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.4.0.74863\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />

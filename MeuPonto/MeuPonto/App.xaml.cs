@@ -1,4 +1,5 @@
 ﻿using MeuPonto.Base;
+using MeuPonto.Model;
 using Xamarin.Forms;
 
 namespace MeuPonto
@@ -8,11 +9,24 @@ namespace MeuPonto
         public App()
         {
             InitializeComponent();
-            Database.CriarDatabase();
-            MainPage = new MeuPonto.View.Consulta();
+            
+            if (Sistema.UsuarioLogado == null)
+            {
+                MainPage = new View.Login();
+            }
+            else
+            {
+                MainPage = new View.Main();
+            }
         }
 
-        protected override void OnStart() { }
+        protected override void OnStart()
+        {
+            if (Database.GetConnection() != null)
+            {
+                Database.CriarDatabase();
+            }
+        }
 
         protected override void OnSleep() { }
 

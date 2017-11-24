@@ -17,7 +17,7 @@ namespace MeuPonto.Base
         public static void CriarDatabase()
         {
             try
-            {  
+            {
                 using (SQLiteConnection conexao = GetConnection())
                 {
                     conexao.CreateTable<Usuario>();

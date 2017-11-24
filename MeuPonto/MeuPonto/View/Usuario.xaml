@@ -1,18 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MeuPonto.View.Usuario">
+             x:Class="MeuPonto.View.Usuario"
+             Title="Dados pessoais">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout HorizontalOptions="Fill" 
-                     VerticalOptions="FillAndExpand">
-                <Label Text="Usuário" 
-                   HorizontalOptions="Fill"
-                   HorizontalTextAlignment="Center"
-                   FontSize="Large"
-                   TextColor="White"
-                   BackgroundColor="DarkCyan"/>
-
+                         VerticalOptions="FillAndExpand">
+                <!-- Título -->
+                <Label x:Uid="lblTitulo"
+                       x:Name="lblTitulo"
+                       HorizontalTextAlignment="Center"
+                       HorizontalOptions="FillAndExpand"
+                       VerticalOptions="FillAndExpand" 
+                       VerticalTextAlignment="Center"
+                       BackgroundColor="#03A9F4"
+                       Text="Novo usuário" 
+                       FontSize="30" 
+                       Style="{DynamicResource SubtitleStyle}"
+                       IsVisible="false"/>
+                
                 <!-- Nome do Usuário -->
                 <Label VerticalOptions="Fill"
                    HorizontalOptions="Fill"
@@ -73,6 +80,7 @@
                    VerticalOptions="Fill"
                    HorizontalOptions="Fill"                 
                    Text="" />
+                
                 <!-- Empresa -->
                 <Label VerticalOptions="Fill"
                    HorizontalOptions="Fill"
@@ -134,27 +142,57 @@
                            Format="HH:mm" />
                 </Grid>
 
+                <!-- Localização -->
+                <Label VerticalOptions="Fill"
+                       HorizontalOptions="Fill"
+                       Text="Local de Trabalho:" />
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Entry  x:Uid="txtLatitude"
+                            x:Name="txtLatitude"
+                            Grid.Row="0"
+                            Grid.Column="0"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill"
+                            IsEnabled="False"
+                            Text="" />
+                    <Entry  x:Uid="txtLongitude"
+                            x:Name="txtLongitude"
+                            Grid.Row="0"
+                            Grid.Column="1"
+                            VerticalOptions="Fill"
+                            HorizontalOptions="Fill"
+                            IsEnabled="False"
+                            Text="" />
+                    <Button x:Uid="btnCadastrarLocalizacao"
+                        x:Name="btnCadastrarLocalizacao"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center" 
+                        Text="Buscar"
+                        Clicked="btnCadastrarLocalizacao_Clicked"/>
+                </Grid>
+                
                 <!-- Botões -->
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
                         <RowDefinition Height="40"/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Button x:Uid="btnCadastrarLocalizacao"
-                        x:Name="btnCadastrarLocalizacao"
-                        Grid.Row="0"
-                        Grid.Column="0"
-                        HorizontalOptions="Fill"
-                        VerticalOptions="Center" 
-                        Text="Geolocalização"
-                        Clicked="btnCadastrarLocalizacao_Clicked"/>
                     <Button x:Uid="btnSalvar"
                         x:Name="btnSalvar"
-                        Grid.Row="1"
+                        Grid.Row="0"
                         Grid.Column="0"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center" 
@@ -162,7 +200,7 @@
                         Clicked="btnSalvarClicked"/>
                     <Button x:Uid="btnCancelar"
                         x:Name="btnCancelar"
-                        Grid.Row="1"
+                        Grid.Row="0"
                         Grid.Column="1"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center"

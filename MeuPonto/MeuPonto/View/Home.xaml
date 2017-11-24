@@ -1,32 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:MeuPonto"         
-             x:Class="MeuPonto.View.MainPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"     
+             x:Class="MeuPonto.View.Home"
+             Title="Hoje"
+             Padding="0,40,0,0">
     <ContentPage.Content>
         <StackLayout VerticalOptions="Fill"
                      HorizontalOptions="Fill">
-            <Grid HorizontalOptions="FillAndExpand"
-                  VerticalOptions="StartAndExpand">
-                
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="10" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="10" />
-                </Grid.ColumnDefinitions>
-                <Label x:Uid="lblTituloPaginaPrincipal"
-                       x:Name="lblTituloPaginaPrincipal" 
-                       Grid.Column="1"
-                       Grid.Row="0"
-                       FontSize="Large"
-                       Text="Hoje"
-                       HorizontalOptions="CenterAndExpand" />
-            </Grid>
-
-
             <Label x:Uid="lblHorasTrabalhadasAteAgora"
                    x:Name="lblHorasTrabalhadasAteAgora"
                    HorizontalOptions="CenterAndExpand"

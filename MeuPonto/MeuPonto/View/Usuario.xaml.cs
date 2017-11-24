@@ -10,19 +10,34 @@ namespace MeuPonto.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Usuario : ContentPage
     {
-        UsuarioDAO usuDao = UsuarioDAO.GetInstance();
-        bool novoCadastro;
-        double latitudeLocalTrab, longitudeLocalTrab = 0;
-
-        public Usuario(bool novoCadastroP)
+        public Usuario()
         {
             InitializeComponent();
-            this.novoCadastro = novoCadastroP;
+            if (Sistema.UsuarioLogado != null)
+            {
+                PreencherCampos();
+            }
+            lblTitulo.IsVisible = Sistema.UsuarioLogado == null;
+        }
+
+        private void PreencherCampos()
+        {
+            txtNome.Text = Sistema.UsuarioLogado.Nome;
+            txtLogin.Text = Sistema.UsuarioLogado.Login;
+            txtSenha.Text = "********";
+            txtCPF.Text = String.Format("{0:###.###.###-##}", Sistema.UsuarioLogado.Cpf);
+            txtTelefone.Text = Sistema.UsuarioLogado.Telefone;
+            txtEmail.Text = Sistema.UsuarioLogado.Email;
+            txtEmpresa.Text = Sistema.UsuarioLogado.Empresa;
+            txtCnpj.Text = Sistema.UsuarioLogado.Cnpj;
+            //TODO: Jeidsan: Preencher os campos TimePiker
+            txtLatitude.Text = Sistema.UsuarioLogado.Latitude.ToString("###0.00");
+            txtLongitude.Text = Sistema.UsuarioLogado.Longitude.ToString("###0.00");
         }
 
         private void btnSalvarClicked()
         {
-            if (novoCadastro == true)
+            if (Sistema.UsuarioLogado == null)
             {
                 InserirUsuario();
                 App.Current.MainPage = new View.Login();
@@ -30,19 +45,19 @@ namespace MeuPonto.View
             else
             {
                 AtualizarUsuario();
-                App.Current.MainPage = new View.MainPage();
+                App.Current.MainPage = new View.Home();
             }
         }
-        
+
         private void btnCancelarClicked()
-        {            
-            if (novoCadastro == true)
+        {
+            if (Sistema.UsuarioLogado == null)
             {
                 App.Current.MainPage = new View.Login();
             }
             else
             {
-                App.Current.MainPage = new View.MainPage();
+                App.Current.MainPage = new View.Home();
             }
         }
 
@@ -62,10 +77,10 @@ namespace MeuPonto.View
                 InicioAlmoco = txtHoraInicioAlmoco.Time,
                 TerminoAlmoco = txtHoraFimAlmoco.Time,
                 TerminoTrabalho = txtHoraFimTrabalho.Time,
-                Latitude = latitudeLocalTrab,
-                Longitude = longitudeLocalTrab
+                Latitude = Convert.ToDouble(String.IsNullOrWhiteSpace(txtLatitude.Text) ? "0" : txtLatitude.Text),
+                Longitude = Convert.ToDouble(String.IsNullOrWhiteSpace(txtLongitude.Text) ? "0" : txtLongitude.Text)
             };
-            usuDao.Adicionar(usu);
+            UsuarioDAO.GetInstance().Adicionar(usu);
         }
 
         private async void btnCadastrarLocalizacao_Clicked(object sender, EventArgs e)
@@ -75,10 +90,8 @@ namespace MeuPonto.View
                 var locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 50;
                 var position = await locator.GetPositionAsync();
-                latitudeLocalTrab = position.Latitude;
-                longitudeLocalTrab = position.Longitude;
-                AtualizarUsuario();
-                await DisplayAlert("Meu Ponto", "Localização registrada com sucesso", "OK");
+                txtLatitude.Text = position.Latitude.ToString("##0.00");
+                txtLongitude.Text = position.Longitude.ToString("##0.00");
             }
             catch (Exception ex)
             {
@@ -104,10 +117,10 @@ namespace MeuPonto.View
                 InicioAlmoco = txtHoraInicioAlmoco.Time,
                 TerminoAlmoco = txtHoraFimAlmoco.Time,
                 TerminoTrabalho = txtHoraFimTrabalho.Time,
-                Latitude = latitudeLocalTrab,
-                Longitude = longitudeLocalTrab
+                Latitude = Convert.ToDouble(txtLatitude.Text),
+                Longitude = Convert.ToDouble(txtLongitude.Text)
             };
-            usuDao.Atualizar(usu);
+            UsuarioDAO.GetInstance().Atualizar(usu);
         }
     }
 }

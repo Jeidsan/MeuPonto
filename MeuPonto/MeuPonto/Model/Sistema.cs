@@ -8,18 +8,12 @@ namespace MeuPonto.Model
 {
     public static class Sistema
     {
-        static Usuario usuarioLogado;
+        private static Usuario fUsuarioLogado;
 
         public static Usuario UsuarioLogado
         {
-            get
-            {
-                return usuarioLogado;
-            }
-            set
-            {
-                usuarioLogado = value;
-            }
+            get { return fUsuarioLogado; }
+            set { fUsuarioLogado = value; }
         }
     }
 }

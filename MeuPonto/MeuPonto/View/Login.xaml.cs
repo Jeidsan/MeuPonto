@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using MeuPonto.DAO;
+using MeuPonto.Model;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using MeuPonto.Controller;
-using MeuPonto.DAO;
-using MeuPonto.Model;
-using Plugin.Geolocator;
 
 namespace MeuPonto.View
 {
@@ -23,24 +16,23 @@ namespace MeuPonto.View
         }
         
         private void btnLogin_Clicked(object sender, EventArgs e)
-        {           
-            UsuarioController usuarioController = new UsuarioController();
-            Sistema.UsuarioLogado = usuarioController.Autenticar(txtLogin.Text, txtSenha.Text);
+        {
+            Sistema.UsuarioLogado = UsuarioDAO.GetInstance().Autenticar(txtLogin.Text, txtSenha.Text);
 
-            if (Sistema.UsuarioLogado != null)
+            if (Sistema.UsuarioLogado == null)
             {
-                App.Current.MainPage = new View.MainPage();
+                DisplayAlert("Alerta ", "Usuário ou senha incorreta!", "OK");
             }
             else
             {
-                DisplayAlert("Alerta ", "Usuário ou senha incorreta!", "OK");
+                App.Current.MainPage = new View.Main();
             }
            
         }
 
         private void btnCreate_Clicked(object sender, EventArgs e)
         {
-            App.Current.MainPage = new View.Usuario(true);
+            App.Current.MainPage = new View.Usuario();
         }
     }
 }

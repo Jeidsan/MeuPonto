@@ -73,5 +73,11 @@ namespace MeuPonto.DAO
         {
             Database.ExecutarComando("DELETE FROM Usuario WHERE Id=?", id);
         }
+
+        public Usuario Autenticar(string login, string senha)
+        {
+            Usuario usuario = Database.GetConnection().FindWithQuery<Usuario>("SELECT * FROM Usuario WHERE login = ? AND senha = ?", login, senha);
+            return usuario;
+        }
     }
 }

@@ -48,14 +48,13 @@ namespace MeuPonto.DAO
             }
         }
 
-        public IEnumerable<String> ConsultarPontos()
+        public IEnumerable<string> ConsultarPontos()
         {
             try
             {
                 using (SQLiteConnection conexao = Database.GetConnection())
                 {
-                    IEnumerable<String> listaPontos = conexao.Query<String>("select strftime('%d/%m/%Y', Data) || '  -  ' || group_concat(strftime('%H:%M', Data), ' - ') as pontos from Ponto group by date(Data)");
-                    return listaPontos;
+                    return conexao.Query<string>("select strftime('%d/%m/%Y', Data) || '  -  ' || group_concat(strftime('%H:%M', Data), ' - ') as pontos from Ponto group by date(Data)");
                 }
             }
             catch (Exception ex)
