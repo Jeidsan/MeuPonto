@@ -45,7 +45,7 @@ namespace MeuPonto.View
             else
             {
                 AtualizarUsuario();
-                App.Current.MainPage = new View.Home();
+                App.Current.MainPage = new View.Main();
             }
         }
 
@@ -57,7 +57,7 @@ namespace MeuPonto.View
             }
             else
             {
-                App.Current.MainPage = new View.Home();
+                App.Current.MainPage = new View.Main();
             }
         }
 
