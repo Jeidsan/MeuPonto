@@ -39,7 +39,7 @@ namespace MeuPonto.DAO
             {
                 using (SQLiteConnection conexao = Database.GetConnection())
                 {
-                    return conexao.Table<Ponto>().ToList();
+                    return conexao.Table<Ponto>().ToList();                    
                 }
             }
             catch (Exception ex)
@@ -48,18 +48,65 @@ namespace MeuPonto.DAO
             }
         }
 
-        public IEnumerable<string> ConsultarPontos()
+        //public List<ConsultaPonto> RealizarConsulta()
+        //{
+        //    try
+        //    {
+        //        using (SQLiteConnection conexao = Database.GetConnection())
+        //        {
+        //            List<ConsultaPonto> listaPontos = conexao.Query<ConsultaPonto>("select strftime('%d/%m/%Y', Data) || '  -  ' || group_concat(strftime('%H:%M', Data), ' - ') as Linha from Ponto group by date(Data)");
+        //            //List<ConsultaPonto> listaPontos = conexao.Query<ConsultaPonto>("select strftime('%d/%m/%Y', Data, 'localtime') || '  -  ' || group_concat(strftime('%H:%M', Data, 'localtime'), ' - ') as pontos from Ponto group by date(Data)");
+
+
+        //            //List<Ponto> listaPontos = conexao.Query<Ponto>("SELECT 'Teste' as Data FROM Ponto");
+        //            //List<string> listaPontos = conexao.CreateCommand("SELECT 'Teste' as Data FROM Ponto", null).ExecuteQuery<String>();
+        //            //List<Ponto> listaPontos = conexao.Query<Ponto>("SELECT * FROM Ponto");
+
+        //            return listaPontos;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Ocorreu um erro ao consultar a lista de batidas de pontos na base de dados. Por favor, tente realizar a tarefa novamente.", ex);
+        //    }
+        //}
+
+        //public List<ConsultaPonto> RealizarPontos()
+        //{
+        //    try
+        //    {
+        //        using (SQLiteConnection conexao = Database.GetConnection())
+        //        {
+        //            List<ConsultaPonto> listaPontos = conexao.Query<ConsultaPonto>("select strftime('%d/%m/%Y', Data) || '  -  ' || group_concat(strftime('%H:%M', Data), ' - ') as Linha from Ponto group by date(Data)");
+        //            //List<ConsultaPonto> listaPontos = conexao.Query<ConsultaPonto>("select strftime('%d/%m/%Y', Data, 'localtime') || '  -  ' || group_concat(strftime('%H:%M', Data, 'localtime'), ' - ') as pontos from Ponto group by date(Data)");
+
+
+        //            //List<Ponto> listaPontos = conexao.Query<Ponto>("SELECT 'Teste' as Data FROM Ponto");
+        //            //List<string> listaPontos = conexao.CreateCommand("SELECT 'Teste' as Data FROM Ponto", null).ExecuteQuery<String>();
+        //            //List<Ponto> listaPontos = conexao.Query<Ponto>("SELECT * FROM Ponto");
+
+        //            return listaPontos;
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw new Exception("Ocorreu um erro ao consultar a lista de batidas de pontos na base de dados. Por favor, tente realizar a tarefa novamente.", ex);
+        //    }
+        //}
+
+        public List<Ponto> ConsultarTodosPontos()
         {
             try
             {
                 using (SQLiteConnection conexao = Database.GetConnection())
                 {
-                    return conexao.Query<string>("select strftime('%d/%m/%Y', Data) || '  -  ' || group_concat(strftime('%H:%M', Data), ' - ') as pontos from Ponto group by date(Data)");
+                    List<Ponto> listaJornadaTrabalhos = conexao.Query<Ponto>("SELECT * FROM Ponto");
+                    return listaJornadaTrabalhos;
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Ocorreu um erro ao consultar a lista de batidas de pontos na base de dados. Por favor, tente realizar a tarefa novamente.", ex);
+                throw new Exception("Ocorreu um erro ao consultar um registro de ponto na base de dados. Por favor, tente realizar a tarefa novamente.", ex);
             }
         }
 

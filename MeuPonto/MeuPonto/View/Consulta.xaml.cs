@@ -9,39 +9,39 @@ using Xamarin.Forms.Xaml;
 using MeuPonto.Model;
 using MeuPonto.DAO;
 
+using MeuPonto.Base;
+using SQLite.Net;
+
 namespace MeuPonto.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Consulta : ContentPage
     {
-        public IEnumerable<string> ListaPonto { get; set; }
+
+        // Criar botão para voltar
 
         public Consulta()
         {
-            InitializeComponent();
-            ListaPonto = PontoDAO.GetInstance().ConsultarPontos();
-            BindingContext = ListaPonto;
+
+            IEnumerable<Ponto> listaPontos = PontoDAO.GetInstance().Consultar();
+            string[] mensagem = new string[listaPontos.Count()];
+            int count = 0;
+            foreach (Ponto ponto in listaPontos)
+                {mensagem[count] = ponto.Data.ToString();count++;}
+            
+
+            //List<ConsultaPonto> listaPontosDias = PontoDAO.GetInstance().RealizarConsulta();
             //string[] mensagem = new string[listaPontosDias.Count()];
             //int count = 0;
-            ////string[] mensagem = new string[listaPontos.Length];
-            //foreach (String informacaoPontosDia in listaPontosDias)
-            ////for (int i = 0; i < listaPontos.Length; i++)
-            //{
-            //    //mensagem[i] = string.Concat(listaPontos[i].Data.ToString("dd/MM/yyyy"), "  -  ");
-            //    //mensagem[i] = string.Concat(mensagem[i], listaPontos[i].Data.ToString("hh:mm"), " - ");
-            //    //mensagem[i] = string.Concat(mensagem[i], listaPontos[i].Data.ToString("hh:mm"), " - ");
-            //    //mensagem[i] = string.Concat(mensagem[i], listaPontos[i].Data.ToString("hh:mm"), " - ");
-            //    //mensagem[i] = string.Concat(mensagem[i], listaPontos[i].Data.ToString("hh:mm"));
+            //foreach (ConsultaPonto pontosDia in listaPontosDias)
+            //    {mensagem[count] = pontosDia.Linha.ToString(); count++;}
 
-            //    //mensagem[count] = string.Concat(p.Data.ToString("dd/MM/yyyy"), "  -  ");
-            //    //mensagem[count] = string.Concat(mensagem[count], p.Data.ToString("hh:mm"));
-            //    mensagem[count] = informacaoPontosDia;
-            //    count++;
-            //}
+            InitializeComponent();
 
-            //this.ListaPontos.ItemsSource = mensagem;
+            this.ListaPontos.ItemsSource = mensagem;
             lblHorasTrabalhadas.Text = "170";
             lblSaldoHoras.Text = "10";
+
         }       
     }
 
